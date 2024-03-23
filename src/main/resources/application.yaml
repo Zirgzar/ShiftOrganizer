@@ -1,0 +1,15 @@
+spring:
+   datasource:
+      username: shift_organizer
+      password: shift_organizer
+      url: jdbc:mysql://localhost:3306/shift_organizer
+
+   jpa:
+      hibernate:
+         ddl-auto: none
+      show-sql: true
+      defer-datasource-initialization: true
+
+   sql:
+      init:
+         mode: never

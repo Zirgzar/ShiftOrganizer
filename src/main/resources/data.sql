@@ -1,0 +1,2 @@
+INSERT INTO store (store_address, store_city, store_name, store_phone, store_state, store_zip) VALUES ('1110 W Pioneer Blvd', 'Mesquite', 'Walmart Subway', '702-346-6468', 'NV', '89027');
+INSERT INTO store (store_address, store_city, store_name, store_phone, store_state, store_zip) VALUES ('370 Sandhill Blvd', 'Mesquite', 'Smith''s Subway', '702-346-8388', 'NV', '89027');
