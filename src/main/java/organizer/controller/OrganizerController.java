@@ -1,9 +1,11 @@
 package organizer.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -138,6 +140,40 @@ public class OrganizerController {
 		storeData.setStoreId(storeId);
 		log.info("Adding employee '{}' to shift '{}' for store '{}'");
 		return organizerService.saveEmployeeToShiftForStore(storeData, shiftId, employeeId);
+	}
+
+//	DELETE
+
+	@DeleteMapping("/store/{storeId}/employee/{employeeId}")
+	public Map<String, String> deleteEmployeeById(@PathVariable Long storeId, @PathVariable Long employeeId) {
+		log.info("Deleting employee '{}'", employeeId);
+		organizerService.deleteEmployeeById(storeId, employeeId);
+
+		return Map.of("message", "Successfully deleted employee '" + employeeId + "'");
+	}
+
+	@DeleteMapping("/shift/{shiftId}")
+	public Map<String, String> deleteShiftById(@PathVariable Long shiftId) {
+		log.info("Deleting shift '{}'", shiftId);
+		organizerService.deleteShiftById(shiftId);
+
+		return Map.of("message", "Successfully deleted shift '" + shiftId + "'");
+	}
+
+	@DeleteMapping("/employees/{employeeId}/shift/{shiftId}")
+	public Map<String, String> deleteShiftFromEmployee(@PathVariable Long employeeId, @PathVariable Long shiftId) {
+		log.info("Deleting shift '{}' from employee '{}'", shiftId, employeeId);
+		organizerService.deleteShiftFromEmployee(shiftId, employeeId);
+
+		return Map.of("message", "Successfully deleted shift '" + shiftId + "' from employee '" + employeeId + "'");
+	}
+
+	@DeleteMapping("/store/{storeId}/shift/{shiftId}")
+	public Map<String, String> deleteShiftFromStore(@PathVariable Long storeId, @PathVariable Long shiftId) {
+		log.info("Deleting shift '{}' from store '{}'", shiftId, storeId);
+		organizerService.deleteShiftFromStore(shiftId, storeId);
+
+		return Map.of("message", "Successfully deleted shift '" + shiftId + "' from store '" + storeId + "'");
 	}
 
 }

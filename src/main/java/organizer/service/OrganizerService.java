@@ -1,5 +1,6 @@
 package organizer.service;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Objects;
@@ -212,6 +213,48 @@ public class OrganizerService {
 	public EmployeeData retrieveEmployeeById(Long storeId, Long employeeId) {
 		Employee employee = findEmployeeById(storeId, employeeId);
 		return new EmployeeData(employee);
+	}
+
+	@Transactional(readOnly = false)
+	public void deleteEmployeeById(Long storeId, Long employeeId) {
+		Employee employee = findEmployeeById(storeId, employeeId);
+		employeeDao.delete(employee);
+	}
+
+	@Transactional(readOnly = false)
+	public void deleteShiftById(Long shiftId) {
+		Shift shift = findShiftById(shiftId);
+		shiftDao.delete(shift);
+	}
+
+	@Transactional(readOnly = false)
+	public void deleteShiftFromEmployee(Long shiftId, Long employeeId) {
+		Shift shift = findShiftById(shiftId);
+		Employee employee = findEmployeeById(employeeId);
+
+		for (Iterator<Shift> s = employee.getShifts().iterator(); s.hasNext();) {
+			Shift val = s.next();
+			if (val.equals(shift)) {
+				s.remove();
+			}
+		}
+
+		employeeDao.save(employee);
+	}
+
+	@Transactional(readOnly = false)
+	public void deleteShiftFromStore(Long shiftId, Long storeId) {
+		Shift shift = findShiftById(shiftId);
+		Store store = findStoreById(storeId);
+
+		for (Iterator<Shift> s = store.getShifts().iterator(); s.hasNext();) {
+			Shift val = s.next();
+			if (val.equals(shift)) {
+				s.remove();
+			}
+		}
+
+		storeDao.save(store);
 	}
 
 }
