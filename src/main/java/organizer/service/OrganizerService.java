@@ -61,7 +61,8 @@ public class OrganizerService {
 
 		shift.getEmployees().add(employee);
 		store.getShifts().add(shift);
-
+		store.getEmployees().add(employee);
+		
 		return new StoreData(storeDao.save(store));
 	}
 
@@ -112,6 +113,7 @@ public class OrganizerService {
 		Shift shift = findShiftById(shiftId);
 
 		employee.getShifts().add(shift);
+		
 
 		return new EmployeeData(employeeDao.save(employee));
 	}
@@ -255,6 +257,12 @@ public class OrganizerService {
 		}
 
 		storeDao.save(store);
+	}
+
+//	TODO
+	public void deleteEmployeeFromShiftForStore(StoreData storeData, Long shiftId, Long employeeId) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -176,4 +176,16 @@ public class OrganizerController {
 		return Map.of("message", "Successfully deleted shift '" + shiftId + "' from store '" + storeId + "'");
 	}
 
+//	TODO
+	@DeleteMapping("/store/{storeId}/shift/{shiftId}/employee/{employeeId}")
+	public Map<String, String> deleteEmployeeFromShiftForStore(@PathVariable Long storeId, @PathVariable Long shiftId,
+			@PathVariable Long employeeId, @RequestBody StoreData storeData) {
+		storeData.setStoreId(storeId);
+		log.info("Removing employee '{}' from shift '{}' for store '{}'");
+		organizerService.deleteEmployeeFromShiftForStore(storeData, shiftId, employeeId);
+
+		return Map.of("message", "Successfully removed employee '" + employeeId + "' from shift '" + shiftId
+				+ "' for store '" + storeId + "'");
+	}
+
 }

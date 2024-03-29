@@ -39,7 +39,8 @@ CREATE TABLE store_shift(
 	shift_id INT NOT NULL,
 	employee_id INT,
 	FOREIGN KEY (store_id) REFERENCES store (store_id) ON DELETE CASCADE,
-	FOREIGN KEY (shift_id) REFERENCES shift (shift_id) ON DELETE CASCADE
+	FOREIGN KEY (shift_id) REFERENCES shift (shift_id) ON DELETE CASCADE,
+	FOREIGN KEY (employee_id) REFERENCES employee (employee_id) ON DELETE CASCADE
 );
 
 CREATE TABLE employee_shift (

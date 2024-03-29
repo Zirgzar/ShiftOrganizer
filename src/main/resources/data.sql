@@ -1,2 +1,11 @@
 INSERT INTO store (store_address, store_city, store_name, store_phone, store_state, store_zip) VALUES ('1110 W Pioneer Blvd', 'Mesquite', 'Walmart Subway', '702-346-6468', 'NV', '89027');
 INSERT INTO store (store_address, store_city, store_name, store_phone, store_state, store_zip) VALUES ('370 Sandhill Blvd', 'Mesquite', 'Smith''s Subway', '702-346-8388', 'NV', '89027');
+INSERT INTO shift (day_of_week, start_time, end_time) VALUES ('Tuesday', '07:00:00', '14:00:00');
+INSERT INTO shift (day_of_week, start_time, end_time) VALUES ('Wednesday', '07:00:00', '14:00:00');
+INSERT INTO shift (day_of_week, start_time, end_time) VALUES ('Thursday', '07:00:00', '14:00:00');
+INSERT INTO shift (day_of_week, start_time, end_time) VALUES ('Friday', '07:00:00', '14:00:00');
+INSERT INTO shift (day_of_week, start_time, end_time) VALUES ('Saturday', '07:00:00', '14:00:00');
+INSERT INTO shift (day_of_week, start_time, end_time) VALUES ('Sunday', '07:00:00', '14:00:00');
+INSERT INTO shift (day_of_week, start_time, end_time) VALUES ('Monday', '07:00:00', '14:00:00');
+INSERT INTO employee (first_name, last_name, phone, pay, store_id) VALUES ('John', 'Smith', '725-555-9876', '13.00', 1);
+INSERT INTO employee (first_name, last_name, phone, pay, store_id) VALUES ('Paul', 'Cumber', '702-543-6687', '16.00', 2);
